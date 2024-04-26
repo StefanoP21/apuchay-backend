@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node ./src/server.ts",
-    "start": "npm run build && node ./dist/src/server.js",
+    "dev": "ts-node ./src/api/server.ts",
+    "start": "npm run build && node ./dist/src/api/server.js",
     "build": "npx tsc"
   },
   "keywords": [],
@@ -14,7 +14,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
