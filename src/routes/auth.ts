@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser, loginUser } from '../controllers';
+import { createUser, loginUser, renewToken } from '../controllers';
 
 export const authRouter = Router();
 
@@ -7,4 +7,4 @@ authRouter.post('/register', createUser);
 
 authRouter.post('/login', loginUser);
 
-// authRouter.get('/renew');
+authRouter.get('/renew', renewToken);
