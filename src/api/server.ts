@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
@@ -21,6 +21,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Routes
+app.use('/api/auth', require('../routes/auth'));
 
 // Server
 app.listen(port, () => {
