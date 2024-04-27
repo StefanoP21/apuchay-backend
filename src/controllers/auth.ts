@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { User } from 'src/schema';
-import { IUser } from 'src/interfaces';
+import { User } from '../schema';
+import { IUser } from '../interfaces';
 
 export const createUser = async (req: Request, res: Response) => {
   const { email, password }: IUser = req.body;
