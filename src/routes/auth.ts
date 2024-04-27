@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { createUser, loginUser, renewToken } from '../controllers';
+import { validateJwt, validateFields } from '../middlewares';
 
 export const authRouter = Router();
 
-authRouter.post('/register', createUser);
+authRouter.post('/register', validateFields, createUser);
 
-authRouter.post('/login', loginUser);
+authRouter.post('/login', validateFields, loginUser);
 
-authRouter.get('/renew', renewToken);
+authRouter.get('/renew', validateJwt, renewToken);
