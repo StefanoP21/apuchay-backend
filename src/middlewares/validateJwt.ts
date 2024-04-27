@@ -1,9 +1,12 @@
-import { NextFunction, Response } from 'express';
-import jwt from 'jsonwebtoken';
-import { IRequestToken } from 'src/interfaces';
+import { NextFunction, Request, Response } from 'express';
+import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
 
-const validateJwt = (req: IRequestToken, res: Response, next: NextFunction) => {
-  const token = req.header('x-token');
+export const validateJwt = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.header('x-token') as string;
 
   if (!token) {
     return res.status(401).json({
@@ -13,13 +16,9 @@ const validateJwt = (req: IRequestToken, res: Response, next: NextFunction) => {
   }
 
   try {
-    const secret = process.env.SECRET_JWT_SEED;
+    const secretKey: Secret = process.env.SECRET_JWT_SEED as Secret;
 
-    if (!secret) {
-      throw new Error('No se ha definido un seed para el JWT');
-    }
-
-    const { uid, name } = jwt.verify(token, secret) as IRequestToken;
+    const { uid, name } = jwt.verify(token!, secretKey) as JwtPayload;
 
     req.uid = uid;
     req.name = name;
