@@ -1,6 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import { connectDB } from '../db';
+import { authRouter } from '../routes';
 
 // configures dotenv to work in your application
 dotenv.config();
@@ -10,6 +12,9 @@ const app = express();
 
 // Port
 const port = process.env.PORT ?? 3000;
+
+// Database
+connectDB();
 
 // CORS
 app.use(cors());
@@ -21,7 +26,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Routes
-app.use('/api/auth', require('../routes/auth'));
+app.use('/api/auth', authRouter);
 
 // Server
 app.listen(port, () => {
