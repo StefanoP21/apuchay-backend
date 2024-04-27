@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { createUser } from 'src/controller';
+import { createUser } from '../controllers';
 
-export const router = Router();
+export const authRouter = Router();
 
-router.post('/register', [], createUser);
+authRouter.post('/register', createUser);
 
-router.post('/login', []);
+// authRouter.post('/login');
 
-router.get('/renew', []);
+// authRouter.get('/renew');
