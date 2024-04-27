@@ -1,1 +1,1 @@
-export { createUser, loginUser } from './auth';
+export { createUser, loginUser, renewToken } from './auth';

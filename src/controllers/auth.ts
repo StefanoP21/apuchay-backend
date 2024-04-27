@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import { User } from '../schema';
-import { IUser } from '../interfaces';
+import { IRequestToken, IUser } from '../interfaces';
 import { generateJwt } from '../utils';
 
 export const createUser = async (req: Request, res: Response) => {
@@ -82,4 +82,18 @@ export const loginUser = async (req: Request, res: Response) => {
       msg: 'Por favor hable con el administrador',
     });
   }
+};
+
+export const renewToken = async (req: IRequestToken, res: Response) => {
+  const { uid, name } = req;
+
+  // Generate JWT
+  const token = await generateJwt(uid, name);
+
+  res.json({
+    ok: true,
+    uid,
+    name,
+    token,
+  });
 };
