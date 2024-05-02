@@ -2,13 +2,9 @@ import { model, Schema } from 'mongoose';
 
 const projectSchema = new Schema({
   infobrasCode: {
-    type: String,
+    type: Number,
     required: [true, 'Infobras code is required'],
     unique: true,
-  },
-  imageUrl: {
-    type: String,
-    required: [true, 'Image url is required'],
   },
   name: {
     type: String,
@@ -17,6 +13,10 @@ const projectSchema = new Schema({
   entity: {
     type: String,
     required: [true, 'Entity is required'],
+  },
+  imageUrl: {
+    type: String,
+    required: [true, 'Image url is required'],
   },
   type: {
     type: String,
@@ -43,7 +43,7 @@ const projectSchema = new Schema({
     required: [true, 'Address is required'],
   },
   amount: {
-    type: String,
+    type: Number,
     required: [true, 'Amount is required'],
   },
   enterprise: {
@@ -51,8 +51,9 @@ const projectSchema = new Schema({
     required: [true, 'Enterprise is required'],
   },
   ruc: {
-    type: String,
+    type: Number,
     required: [true, 'RUC is required'],
+    unique: true,
   },
   contact: {
     type: String,
@@ -61,9 +62,10 @@ const projectSchema = new Schema({
   dni: {
     type: String,
     required: [true, 'DNI is required'],
+    unique: true,
   },
   cip: {
-    type: String,
+    type: Number,
     required: [true, 'CIP is required'],
   },
 });
