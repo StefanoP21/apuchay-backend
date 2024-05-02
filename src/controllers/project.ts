@@ -45,14 +45,26 @@ export const getProjectById = async (req: Request, res: Response) => {
 };
 
 export const createProject = async (req: Request, res: Response) => {
-  const project = new Project(req.body);
+  const { infobrasCode } = req.body;
 
   try {
-    const projectDb = await project.save();
+    let project = await Project.findOne({ infobrasCode });
+
+    if (project) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'Ya existe un proyecto con ese código',
+      });
+    }
+
+    project = new Project(req.body);
+
+    await project.save();
 
     res.status(201).json({
       ok: true,
-      project: projectDb,
+      uid: project.id,
+      name: project.name,
     });
   } catch (error) {
     console.log(error);
