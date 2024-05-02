@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { connectDB } from '../db';
-import { authRouter, projectRouter } from '../routes';
+import { authRouter, courseRouter, projectRouter } from '../routes';
 
 // configures dotenv to work in your application
 dotenv.config();
@@ -28,6 +28,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRouter);
 app.use('/api/projects', projectRouter);
+app.use('/api/courses', courseRouter);
 
 // Server
 app.listen(port, () => {
