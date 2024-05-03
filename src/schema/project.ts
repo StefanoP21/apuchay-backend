@@ -53,7 +53,6 @@ const projectSchema = new Schema({
   ruc: {
     type: Number,
     required: [true, 'RUC is required'],
-    unique: true,
   },
   contact: {
     type: String,
@@ -62,7 +61,6 @@ const projectSchema = new Schema({
   dni: {
     type: String,
     required: [true, 'DNI is required'],
-    unique: true,
   },
   cip: {
     type: Number,
