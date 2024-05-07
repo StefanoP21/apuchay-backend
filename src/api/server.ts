@@ -20,7 +20,7 @@ connectDB();
 app.use(cors());
 
 // Public Folder
-app.use(express.static('public'));
+app.use(express.static('/src/public'));
 
 // Read and Parse JSON
 app.use(express.json());
