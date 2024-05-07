@@ -2,10 +2,10 @@
   "name": "apuchay-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node ./src/server.ts",
-    "start": "npm run build && node ./dist/src/server.js",
+    "dev": "ts-node src/server.ts",
+    "start": "npm run build && node dist/server.js",
     "build": "npx tsc"
   },
   "keywords": [],
