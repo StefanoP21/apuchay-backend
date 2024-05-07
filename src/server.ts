@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { connectDB } from '../db';
-import { authRouter, courseRouter, projectRouter } from '../routes';
+import { connectDB } from './db';
+import { authRouter, courseRouter, projectRouter } from './routes';
 
 // configures dotenv to work in your application
 dotenv.config();
@@ -20,7 +20,7 @@ connectDB();
 app.use(cors());
 
 // Public Folder
-app.use(express.static('/src/public'));
+app.use(express.static('./public'));
 
 // Read and Parse JSON
 app.use(express.json());
